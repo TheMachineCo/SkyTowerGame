@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 namespace _DroppyTower
 {
@@ -168,13 +169,20 @@ namespace _DroppyTower
         {
             #region Scrolling
             // Do the scrolling stuff
-            if (Input.GetMouseButtonDown(0))    // first touch
+            var no = GameManager.Instance.targetPlayerNo;
+            var variationActive = GameManager.Instance.variationActive;
+            var k1 = GameManager.Instance.key1;
+            var k2 = GameManager.Instance.key2;
+            var k3 = GameManager.Instance.key3;
+            var targetKey = no == 1 ? k1 : no == 2 ? k2 : k3;
+
+            if ((variationActive && Input.GetKeyDown(targetKey)) || (!variationActive && (Input.GetKeyDown(k1) || Input.GetKeyDown(k2) || Input.GetKeyDown(k3))))    // first touch
             {
                 startPos = Input.mousePosition;
                 startTime = Time.time;
                 hasMoved = false;
             }
-            else if (Input.GetMouseButton(0))   // touch stays
+            else if ((variationActive && Input.GetKey(targetKey)) || (!variationActive && (Input.GetKey(k1) || Input.GetKey(k2) || Input.GetKey(k3))))   // touch stays
             {
                 endPos = Input.mousePosition;
                 endTime = Time.time;
@@ -223,7 +231,7 @@ namespace _DroppyTower
                 }
             }
 
-            if (Input.GetMouseButtonUp(0))
+            if ((variationActive && Input.GetKeyUp(targetKey)) || (!variationActive && (Input.GetKeyUp(k1) || Input.GetKeyUp(k2) || Input.GetKeyUp(k3))))
             {
                 if (hasMoved)
                 {

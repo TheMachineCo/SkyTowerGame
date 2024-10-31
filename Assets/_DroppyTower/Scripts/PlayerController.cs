@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 namespace _DroppyTower
 {
@@ -190,6 +191,14 @@ namespace _DroppyTower
                 isFirstCube = true;
                 swinging = false;
                 character = (GameObject)Instantiate(CharacterManager.Instance.characters[CharacterManager.Instance.CurrentCharacterIndex], new Vector3(hook.transform.position.x, hook.transform.position.y - 0.5f - (hook.GetComponent<MeshFilter>().mesh.bounds.extents.y) * hook.transform.lossyScale.y, hook.transform.position.z), Quaternion.Euler(0, CharacterManager.Instance.characters[CharacterManager.Instance.CurrentCharacterIndex].transform.eulerAngles.y, 0));
+                int playerNo = Random.Range(1, 4);
+                GameManager.Instance.targetPlayerNo = playerNo;
+                if (GameManager.Instance.variationActive)
+                {
+                    print("ss");
+                    character.transform.GetChild(0).gameObject.SetActive(true);
+                    character.GetComponentInChildren<TMP_Text>().text = playerNo.ToString();
+                }
                 Clinch.transform.parent = null;
                 Clinch.transform.position = character.transform.position;
                 Clinch.transform.parent = character.transform;
@@ -321,6 +330,13 @@ namespace _DroppyTower
             Clinch.SetActive(true);
             isFirstCube = false;
             GameObject cube = (GameObject)Instantiate(CharacterManager.Instance.characters[CharacterManager.Instance.CurrentCharacterIndex], new Vector3(hook.transform.position.x, hook.transform.position.y - 0.5f - (hook.GetComponent<MeshFilter>().mesh.bounds.extents.y) * hook.transform.lossyScale.y, hook.transform.position.z), Quaternion.Euler(0, CharacterManager.Instance.characters[CharacterManager.Instance.CurrentCharacterIndex].transform.eulerAngles.y, 0));
+            int playerNo = Random.Range(1, 4);
+            GameManager.Instance.targetPlayerNo = playerNo;
+            if (GameManager.Instance.variationActive)
+            {
+                cube.transform.GetChild(0).gameObject.SetActive(true);
+                cube.GetComponentInChildren<TMP_Text>().text = playerNo.ToString();
+            }
             cubeBoundX = cube.GetComponent<MeshFilter>().mesh.bounds.extents.x;
             Clinch.transform.parent = null;
             Clinch.transform.position = cube.transform.position;

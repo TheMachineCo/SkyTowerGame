@@ -61,15 +61,7 @@ namespace _DroppyTower
 
         void Awake()
         {
-            if (Instance)
-            {
-                DestroyImmediate(gameObject);
-            }
-            else
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
+            Instance = this;
         }
 
         void Start()

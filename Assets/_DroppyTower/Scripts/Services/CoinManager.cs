@@ -9,12 +9,12 @@ namespace _DroppyTower
         public static CoinManager Instance;
 
         public int Coins
-        { 
+        {
             get { return _coins; }
             private set { _coins = value; }
         }
 
-        public static event Action<int> CoinsUpdated = delegate {};
+        public static event Action<int> CoinsUpdated = delegate { };
 
         [SerializeField]
         int initialCoins = 0;
@@ -29,15 +29,7 @@ namespace _DroppyTower
 
         void Awake()
         {
-            if (Instance)
-            {
-                DestroyImmediate(gameObject);
-            }
-            else
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
+            Instance = this;
         }
 
         void Start()

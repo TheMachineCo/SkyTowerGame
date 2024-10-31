@@ -91,7 +91,19 @@ namespace _DroppyTower
             bestScore.text = ScoreManager.Instance.HighScore.ToString();
             coinText.text = CoinManager.Instance.Coins.ToString();
 
-            if (!DailyRewardController.Instance.disable && dailyRewardBtn.gameObject.activeInHierarchy)
+            if (playBtn.activeInHierarchy && (Input.GetKeyDown(GameManager.Instance.key1) || Input.GetKeyDown(GameManager.Instance.key2) || Input.GetKeyDown(GameManager.Instance.key3)))
+                StartGame();
+            if (restartBtn.activeInHierarchy && (Input.GetKeyDown(GameManager.Instance.key1) || Input.GetKeyDown(GameManager.Instance.key2) || Input.GetKeyDown(GameManager.Instance.key3)))
+            {
+                SceneManager.LoadScene(0);
+            }
+            if (Input.GetKey(KeyCode.R) && Input.GetKey(KeyCode.LeftControl))
+            {
+                PlayerPrefs.SetInt("Variation", GameManager.Instance.variationActive ? 0 : 1);
+                SceneManager.LoadScene(0);
+            }
+
+            /*if (!DailyRewardController.Instance.disable && dailyRewardBtn.gameObject.activeInHierarchy)
             {
                 if (DailyRewardController.Instance.CanRewardNow())
                 {
@@ -104,7 +116,7 @@ namespace _DroppyTower
                     dailyRewardBtnText.text = string.Format("REWARD IN {0:00}:{1:00}:{2:00}", timeToReward.Hours, timeToReward.Minutes, timeToReward.Seconds);
                     dailyRewardAnimator.SetTrigger("deactivate");
                 }
-            }
+            }*/
 
             if (settingsUI.activeSelf)
             {
@@ -252,7 +264,7 @@ namespace _DroppyTower
         void ShowWatchForCoinsBtn()
         {
             // Only show "watch for coins button" if a rewarded ad is loaded and premium features are enabled
-            #if EASY_MOBILE
+#if EASY_MOBILE
         if (IsPremiumFeaturesEnabled() && AdDisplayer.Instance.CanShowRewardedAd() && AdDisplayer.Instance.watchAdToEarnCoins)
         {
             watchRewardedAdBtn.SetActive(true);
@@ -262,16 +274,16 @@ namespace _DroppyTower
         {
             watchRewardedAdBtn.SetActive(false);
         }
-            #endif
+#endif
         }
 
         void ShowDailyRewardBtn()
         {
             // Not showing the daily reward button if the feature is disabled
-            if (!DailyRewardController.Instance.disable)
+            /*if (!DailyRewardController.Instance.disable)
             {
                 //dailyRewardBtn.SetActive(true);
-            }
+            }*/
         }
 
         public void ShowSettingsUI()
@@ -315,24 +327,24 @@ namespace _DroppyTower
 
         public void WatchRewardedAd()
         {
-            #if EASY_MOBILE
+#if EASY_MOBILE
         // Hide the button
         watchRewardedAdBtn.SetActive(false);
 
         AdDisplayer.CompleteRewardedAdToEarnCoins += OnCompleteRewardedAdToEarnCoins;
         AdDisplayer.Instance.ShowRewardedAdToEarnCoins();
-            #endif
+#endif
         }
 
         void OnCompleteRewardedAdToEarnCoins()
         {
-            #if EASY_MOBILE
+#if EASY_MOBILE
         // Unsubscribe
         AdDisplayer.CompleteRewardedAdToEarnCoins -= OnCompleteRewardedAdToEarnCoins;
 
         // Give the coins!
         ShowRewardUI(AdDisplayer.Instance.rewardedCoins);
-            #endif
+#endif
         }
 
         public void GrabDailyReward()
@@ -365,7 +377,7 @@ namespace _DroppyTower
 
         public void ShowLeaderboardUI()
         {
-            #if EASY_MOBILE
+#if EASY_MOBILE
         if (GameServices.IsInitialized())
         {
             GameServices.ShowLeaderboardUI();
@@ -376,14 +388,14 @@ namespace _DroppyTower
             NativeUI.Alert("Service Unavailable", "The user is not logged in to Game Center.");
 #elif UNITY_ANDROID
             GameServices.Init();
-            #endif
+#endif
         }
-            #endif
+#endif
         }
 
         public void ShowAchievementsUI()
         {
-            #if EASY_MOBILE
+#if EASY_MOBILE
         if (GameServices.IsInitialized())
         {
             GameServices.ShowAchievementsUI();
@@ -394,23 +406,23 @@ namespace _DroppyTower
             NativeUI.Alert("Service Unavailable", "The user is not logged in to Game Center.");
 #elif UNITY_ANDROID
             GameServices.Init();
-            #endif
+#endif
         }
-            #endif
+#endif
         }
 
         public void PurchaseRemoveAds()
         {
-            #if EASY_MOBILE
+#if EASY_MOBILE
         InAppPurchaser.Instance.Purchase(InAppPurchaser.Instance.removeAds);
-            #endif
+#endif
         }
 
         public void RestorePurchase()
         {
-            #if EASY_MOBILE
+#if EASY_MOBILE
         InAppPurchaser.Instance.RestorePurchase();
-            #endif
+#endif
         }
 
         public void ShowShareUI()

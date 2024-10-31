@@ -105,7 +105,7 @@ namespace _DroppyTower
                     //Compare distance between center old and new building to make it fall out or not
                     if (distance < GetBiasDistance(GameManager.Instance.FallBias))
                     {
-                       
+
                         if (leftRightDistance < 0)
                         {
                             failForceX = -20 * (GetBiasDistance(GameManager.Instance.FallBias) - distance) / GetBiasDistance(GameManager.Instance.FallBias);
@@ -163,7 +163,7 @@ namespace _DroppyTower
                                 perfect = true;
                                 StartCoroutine(FixRotation());
                             }
-//                            SoundManager.Instance.PlaySound(SoundManager.Instance.drop);
+                            //                            SoundManager.Instance.PlaySound(SoundManager.Instance.drop);
                             SoundManager.Instance.PlaySound(SoundManager.Instance.score);
                             ScoreManager.Instance.AddScore(GameManager.Instance.ScoreUp);
                             GameManager.Instance.playerController.SetCubeNumber(1);
@@ -220,7 +220,7 @@ namespace _DroppyTower
                     gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
                     StartCoroutine(FixRotation());
                     hasCollided = true;
-//                    SoundManager.Instance.PlaySound(SoundManager.Instance.drop);
+                    //                    SoundManager.Instance.PlaySound(SoundManager.Instance.drop);
                     SoundManager.Instance.PlaySound(SoundManager.Instance.score);
                     PlayerController.RootPosXCube = gameObject.transform.localPosition.x;
                     PlayerController.LastPosXCube = gameObject.transform.localPosition.x;
@@ -247,10 +247,10 @@ namespace _DroppyTower
         private void OnCollisionExit(Collision collision)
         {
             if (oldCube != null)
-            if (fail && oldCube.GetComponent<FixedJoint>() != null)
-            {
-                oldCube.GetComponent<Rigidbody>().isKinematic = true;
-            }
+                if (fail && oldCube.GetComponent<FixedJoint>() != null)
+                {
+                    oldCube.GetComponent<Rigidbody>().isKinematic = true;
+                }
         }
 
         //When camera can see the building it will breakable
@@ -377,8 +377,8 @@ namespace _DroppyTower
                 isFix = true;
             }
             Vector3 curPos = gameObject.transform.localPosition;
-            if(cubeNumber != 1)
-                if(!isFix)
+            if (cubeNumber != 1)
+                if (!isFix)
                     gameObject.transform.rotation = Quaternion.Slerp(oriAngle, targetAngle, 1);
             if (!isFirstCube && !perfect)
             {
@@ -516,27 +516,88 @@ namespace _DroppyTower
             {
                 if (cubeRigid.velocity.y > 0)
                     cubeRigid.velocity = new Vector3(cubeRigid.velocity.x, 0, cubeRigid.velocity.z);
-                if (Input.GetMouseButtonDown(0) && isNewCube)
+
+                var no = GameManager.Instance.targetPlayerNo;
+                var variationActive = GameManager.Instance.variationActive;
+                var k1 = GameManager.Instance.key1;
+                var k2 = GameManager.Instance.key2;
+                var k3 = GameManager.Instance.key3;
+                var targetKey = no == 1 ? k1 : no == 2 ? k2 : k3;
+
+                if (Input.GetKeyDown(k1) && isNewCube)
                 {
-                    if (gameObject.transform.childCount > 0)
+                    if (!variationActive || k1 == targetKey)
                     {
-                        for (int i = 0; i < gameObject.transform.childCount; i++)
+                        if (gameObject.transform.childCount > 0)
                         {
-                            var child = gameObject.transform.GetChild(i);
-                            if (child.name == "Clinch")
+                            for (int i = 0; i < gameObject.transform.childCount; i++)
                             {
-                                child.parent = null;
+                                var child = gameObject.transform.GetChild(i);
+                                if (child.name == "Clinch")
+                                {
+                                    child.parent = null;
+                                }
                             }
                         }
+                        GameManager.Instance.playerController.Clinch.SetActive(false);
+                        if (!isFirstCube)
+                            cubeRigid.mass = 0;
+                        gameObject.transform.rotation = Quaternion.Euler(0, gameObject.transform.eulerAngles.y, 0);
+                        cubeRigid.velocity = new Vector3(0, -70, 0);
+                        isNewCube = false;
+                        previous = true;
+                        PlayerController.CanDrop = false;
                     }
-                    GameManager.Instance.playerController.Clinch.SetActive(false);
-                    if (!isFirstCube)
-                        cubeRigid.mass = 0;
-                    gameObject.transform.rotation = Quaternion.Euler(0, gameObject.transform.eulerAngles.y, 0);
-                    cubeRigid.velocity = new Vector3(0, -70, 0);
-                    isNewCube = false;
-                    previous = true;
-                    PlayerController.CanDrop = false;
+                }
+                else if (Input.GetKeyDown(k2) && isNewCube)
+                {
+                    if (!variationActive || k2 == targetKey)
+                    {
+                        if (gameObject.transform.childCount > 0)
+                        {
+                            for (int i = 0; i < gameObject.transform.childCount; i++)
+                            {
+                                var child = gameObject.transform.GetChild(i);
+                                if (child.name == "Clinch")
+                                {
+                                    child.parent = null;
+                                }
+                            }
+                        }
+                        GameManager.Instance.playerController.Clinch.SetActive(false);
+                        if (!isFirstCube)
+                            cubeRigid.mass = 0;
+                        gameObject.transform.rotation = Quaternion.Euler(0, gameObject.transform.eulerAngles.y, 0);
+                        cubeRigid.velocity = new Vector3(0, -70, 0);
+                        isNewCube = false;
+                        previous = true;
+                        PlayerController.CanDrop = false;
+                    }
+                }
+                else if (Input.GetKeyDown(k3) && isNewCube)
+                {
+                    if (!variationActive || k3 == targetKey)
+                    {
+                        if (gameObject.transform.childCount > 0)
+                        {
+                            for (int i = 0; i < gameObject.transform.childCount; i++)
+                            {
+                                var child = gameObject.transform.GetChild(i);
+                                if (child.name == "Clinch")
+                                {
+                                    child.parent = null;
+                                }
+                            }
+                        }
+                        GameManager.Instance.playerController.Clinch.SetActive(false);
+                        if (!isFirstCube)
+                            cubeRigid.mass = 0;
+                        gameObject.transform.rotation = Quaternion.Euler(0, gameObject.transform.eulerAngles.y, 0);
+                        cubeRigid.velocity = new Vector3(0, -70, 0);
+                        isNewCube = false;
+                        previous = true;
+                        PlayerController.CanDrop = false;
+                    }
                 }
 
                 if (gameObject.GetComponent<FixedJoint>() != null)

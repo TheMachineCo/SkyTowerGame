@@ -14,23 +14,15 @@ namespace _DroppyTower
 
         public bool HasNewHighScore { get; private set; }
 
-        public static event Action<int> ScoreUpdated = delegate {};
-        public static event Action<int> HighscoreUpdated = delegate {};
+        public static event Action<int> ScoreUpdated = delegate { };
+        public static event Action<int> HighscoreUpdated = delegate { };
 
         private const string HIGHSCORE = "HIGHSCORE";
         // key name to store high score in PlayerPrefs
 
         void Awake()
         {
-            if (Instance)
-            {
-                DestroyImmediate(gameObject);
-            }
-            else
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
+            Instance = this;
         }
 
         void Start()

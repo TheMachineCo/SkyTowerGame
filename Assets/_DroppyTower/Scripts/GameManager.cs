@@ -41,6 +41,8 @@ namespace _DroppyTower
             }
         }
 
+        public KeyCode key1 = KeyCode.A, key2 = KeyCode.S, key3 = KeyCode.D;
+
         public static int GameCount
         {
             get { return _gameCount; }
@@ -106,7 +108,7 @@ namespace _DroppyTower
         }
 
         [SerializeField]
-        [Range(0,1)]
+        [Range(0, 1)]
         private float tiltValue = 0.15f;
         public float TiltValue
         {
@@ -232,6 +234,8 @@ namespace _DroppyTower
         [Header("Object References")]
         public PlayerController playerController;
         public Transform hookTrans;
+        public int targetPlayerNo;
+        public bool variationActive;
 
         void OnEnable()
         {
@@ -270,7 +274,7 @@ namespace _DroppyTower
             // Initial setup
             Application.targetFrameRate = targetFrameRate;
             ScoreManager.Instance.Reset();
-
+            variationActive = PlayerPrefs.GetInt("Variation", 0) == 0 ? false : true;
             PrepareGame();
         }
 
