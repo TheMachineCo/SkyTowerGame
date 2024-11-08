@@ -25,6 +25,7 @@ namespace _DroppyTower
         public GameObject heart;
         public GameObject newBestScore;
         public GameObject playBtn;
+        public GameObject images;
         public GameObject restartBtn;
         public GameObject menuButtons;
         public GameObject dailyRewardBtn;
@@ -164,6 +165,7 @@ namespace _DroppyTower
             score.gameObject.SetActive(false);
             newBestScore.SetActive(false);
             playBtn.SetActive(false);
+            images.SetActive(false);
             menuButtons.SetActive(false);
             dailyRewardBtn.SetActive(false);
 
@@ -208,6 +210,7 @@ namespace _DroppyTower
             header.SetActive(true);
             title.SetActive(true);
             playBtn.SetActive(true);
+            images.SetActive(false);
             restartBtn.SetActive(false);
             //menuButtons.SetActive(true);
             shareBtn.SetActive(false);
@@ -229,6 +232,7 @@ namespace _DroppyTower
                 _heart.Add(createImage);
             }
             header.SetActive(true);
+            images.SetActive(true);
             title.SetActive(false);
             score.gameObject.SetActive(true);
             playBtn.SetActive(false);

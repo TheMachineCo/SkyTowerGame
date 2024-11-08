@@ -99,7 +99,7 @@ namespace _DroppyTower
         void Update()
         {
             //Create cloud when player gain 7 score
-            if (ScoreManager.Instance.Score > 10 && (ScoreManager.Instance.Score > createCloudScore + 2))
+            if (ScoreManager.Instance.Score > 6 && (ScoreManager.Instance.Score > createCloudScore + 1))
             {
                 CreateCloud();
                 createCloudScore = ScoreManager.Instance.Score;
@@ -196,8 +196,7 @@ namespace _DroppyTower
                 if (GameManager.Instance.variationActive)
                 {
                     print("ss");
-                    character.transform.GetChild(0).gameObject.SetActive(true);
-                    character.GetComponentInChildren<TMP_Text>().text = playerNo.ToString();
+                    character.transform.GetChild(playerNo-1).gameObject.SetActive(true);
                 }
                 Clinch.transform.parent = null;
                 Clinch.transform.position = character.transform.position;
@@ -272,7 +271,7 @@ namespace _DroppyTower
             for (int i = 1; i <= amount; i++)
             {
                 float width = Random.Range(-21, 21);
-                int cloudNumber = Random.Range(0, 3);
+                int cloudNumber = Random.Range(0, 1);
                 float velocity = Random.Range(GameManager.Instance.CloudSpeedMin, GameManager.Instance.CloundSpeedMax);
                 int direction = Random.Range(-1, 1);
                 int rand = Random.Range(0, 2);
@@ -334,8 +333,7 @@ namespace _DroppyTower
             GameManager.Instance.targetPlayerNo = playerNo;
             if (GameManager.Instance.variationActive)
             {
-                cube.transform.GetChild(0).gameObject.SetActive(true);
-                cube.GetComponentInChildren<TMP_Text>().text = playerNo.ToString();
+                cube.transform.GetChild(playerNo - 1).gameObject.SetActive(true);
             }
             cubeBoundX = cube.GetComponent<MeshFilter>().mesh.bounds.extents.x;
             Clinch.transform.parent = null;
