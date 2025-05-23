@@ -190,13 +190,14 @@ namespace _DroppyTower
                 isCreateCube = false;
                 isFirstCube = true;
                 swinging = false;
+                CharacterManager.Instance.CurrentCharacterIndex = 0;
                 character = (GameObject)Instantiate(CharacterManager.Instance.characters[CharacterManager.Instance.CurrentCharacterIndex], new Vector3(hook.transform.position.x, hook.transform.position.y - 0.5f - (hook.GetComponent<MeshFilter>().mesh.bounds.extents.y) * hook.transform.lossyScale.y, hook.transform.position.z), Quaternion.Euler(0, CharacterManager.Instance.characters[CharacterManager.Instance.CurrentCharacterIndex].transform.eulerAngles.y, 0));
                 int playerNo = Random.Range(1, 4);
                 GameManager.Instance.targetPlayerNo = playerNo;
                 if (GameManager.Instance.variationActive)
                 {
                     print("ss");
-                    character.transform.GetChild(playerNo-1).gameObject.SetActive(true);
+                    //character.transform.GetChild(playerNo-1).gameObject.SetActive(true);
                 }
                 Clinch.transform.parent = null;
                 Clinch.transform.position = character.transform.position;
@@ -228,6 +229,7 @@ namespace _DroppyTower
         //create effect when player gain perfect score
         public void CreatePerfectEffect(Vector3 Position, GameObject Parent)
         {
+            if (!Parent) return;
             perfectEffect.transform.parent = Parent.transform;
             perfectEffect.transform.localPosition = Position;
             var main = scoreEffect.main;
@@ -321,19 +323,21 @@ namespace _DroppyTower
             else
                 startCoroutine = true;
         }
-
+        private int innerIndex;
         //create cube at hook position
         void CreateNewCube()
         {
             breakCount = 0;
             Clinch.SetActive(true);
             isFirstCube = false;
-            GameObject cube = (GameObject)Instantiate(CharacterManager.Instance.characters[CharacterManager.Instance.CurrentCharacterIndex], new Vector3(hook.transform.position.x, hook.transform.position.y - 0.5f - (hook.GetComponent<MeshFilter>().mesh.bounds.extents.y) * hook.transform.lossyScale.y, hook.transform.position.z), Quaternion.Euler(0, CharacterManager.Instance.characters[CharacterManager.Instance.CurrentCharacterIndex].transform.eulerAngles.y, 0));
+            innerIndex++;
+            GameObject cube = (GameObject)Instantiate(CharacterManager.Instance.characters[innerIndex], new Vector3(hook.transform.position.x, hook.transform.position.y - 0.5f - (hook.GetComponent<MeshFilter>().mesh.bounds.extents.y) * hook.transform.lossyScale.y, hook.transform.position.z), Quaternion.Euler(0, CharacterManager.Instance.characters[innerIndex].transform.eulerAngles.y, 0));
+            //cube.GetComponent<MeshFilter>().mesh = cube.transform.GetChild(innerIndex).gameObject.GetComponent<MeshFilter>().mesh;
             int playerNo = Random.Range(1, 4);
             GameManager.Instance.targetPlayerNo = playerNo;
             if (GameManager.Instance.variationActive)
             {
-                cube.transform.GetChild(playerNo - 1).gameObject.SetActive(true);
+                //cube.transform.GetChild(playerNo - 1).gameObject.SetActive(true);
             }
             cubeBoundX = cube.GetComponent<MeshFilter>().mesh.bounds.extents.x;
             Clinch.transform.parent = null;

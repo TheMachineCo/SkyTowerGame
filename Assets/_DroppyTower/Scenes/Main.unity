@@ -26153,9 +26153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db41cfb3e07db6a41b74dca8bf271fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key1: 97
-  key2: 115
-  key3: 100
+  key1: 323
+  key2: 323
+  key3: 323
   targetFrameRate: 60
   _gameState: 0
   life: 3

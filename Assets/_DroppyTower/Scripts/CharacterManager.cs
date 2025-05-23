@@ -13,7 +13,8 @@ namespace _DroppyTower
         {
             get
             {
-                return PlayerPrefs.GetInt(CURRENT_CHARACTER_KEY, 0);
+                int currentIndex = PlayerPrefs.GetInt(CURRENT_CHARACTER_KEY, 0);
+                return currentIndex;
             }
             set
             {
@@ -21,6 +22,7 @@ namespace _DroppyTower
                 PlayerPrefs.Save();
             }
         }
+
 
         public GameObject[] characters;
 

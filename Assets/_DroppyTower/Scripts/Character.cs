@@ -13,7 +13,7 @@ namespace _DroppyTower
         {
             get
             {
-                return (isFree || PlayerPrefs.GetInt(characterName, 0) == 1);
+                return true;
             }
         }
 
