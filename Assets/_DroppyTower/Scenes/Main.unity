@@ -16517,32 +16517,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11497630, guid: 723f4b5589fb4aa4e9935de29886c2f8, type: 3}
       propertyPath: characters.Array.size
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11497630, guid: 723f4b5589fb4aa4e9935de29886c2f8, type: 3}
       propertyPath: characters.Array.data[0]
       value: 
-      objectReference: {fileID: 1995504768408880, guid: 2625803cafaa3914cbd314e5436b856b,
+      objectReference: {fileID: 509933210761806525, guid: c157571b222465c4390f869a70999b50,
         type: 3}
     - target: {fileID: 11497630, guid: 723f4b5589fb4aa4e9935de29886c2f8, type: 3}
       propertyPath: characters.Array.data[1]
       value: 
-      objectReference: {fileID: 1695972728837700, guid: a0a677432814c2345af04a3382cfe46b,
+      objectReference: {fileID: 5856433840101072335, guid: 04164a5ebb48f4840ad79ef97034d002,
         type: 3}
     - target: {fileID: 11497630, guid: 723f4b5589fb4aa4e9935de29886c2f8, type: 3}
       propertyPath: characters.Array.data[2]
       value: 
-      objectReference: {fileID: 1413429486958868, guid: 5031cb74cbb59ab4f8f91144887d39bc,
+      objectReference: {fileID: 5610356636188466802, guid: bff3d6ab2383ec04d9e479b0dcdd4216,
         type: 3}
     - target: {fileID: 11497630, guid: 723f4b5589fb4aa4e9935de29886c2f8, type: 3}
       propertyPath: characters.Array.data[3]
       value: 
-      objectReference: {fileID: 1625731672555704, guid: 781e12b080b53e74d9d303de7c6a9c72,
+      objectReference: {fileID: 5380775679637123203, guid: 3536fd9a6eafd8b4c8679db969f54f37,
         type: 3}
     - target: {fileID: 11497630, guid: 723f4b5589fb4aa4e9935de29886c2f8, type: 3}
       propertyPath: characters.Array.data[4]
       value: 
-      objectReference: {fileID: 1321982869820240, guid: 2be305478cb133646adaaaa4e0bdbc94,
+      objectReference: {fileID: 960308665886981855, guid: 87bfd07b67f07264ba6e1d2a303fd21b,
         type: 3}
     - target: {fileID: 11497630, guid: 723f4b5589fb4aa4e9935de29886c2f8, type: 3}
       propertyPath: characters.Array.data[5]
@@ -26158,7 +26158,7 @@ MonoBehaviour:
   key3: 323
   targetFrameRate: 60
   _gameState: 0
-  life: 3
+  life: 1
   minSwaying: 0.01
   maxSwaying: 1.5
   increaseSwayingPoint: 1

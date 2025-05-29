@@ -145,6 +145,7 @@ namespace _DroppyTower
             //Swinging the building
             if (swinging)
             {
+                if (!character) return;
                 timeCounterSwing += Time.deltaTime;
                 float bounusSwing = swing * Mathf.Abs(RootPosXCube - LastPosXCube) / (2 * GameManager.Instance.LocalScale.x * cubeBoundX) * GameManager.Instance.TiltValue;
                 float zSwing = Mathf.Cos(timeCounterSwing) * (swing + bounusSwing) * 3f;
@@ -167,7 +168,7 @@ namespace _DroppyTower
             }
         }
 
-        public void LostLife()
+        public void LostLife(bool isManuel = false)
         {
             SoundManager.Instance.PlaySound(SoundManager.Instance.wrong);
             if (PlayerLostLife != null)
@@ -327,34 +328,42 @@ namespace _DroppyTower
         //create cube at hook position
         void CreateNewCube()
         {
-            breakCount = 0;
-            Clinch.SetActive(true);
-            isFirstCube = false;
             innerIndex++;
-            GameObject cube = (GameObject)Instantiate(CharacterManager.Instance.characters[innerIndex], new Vector3(hook.transform.position.x, hook.transform.position.y - 0.5f - (hook.GetComponent<MeshFilter>().mesh.bounds.extents.y) * hook.transform.lossyScale.y, hook.transform.position.z), Quaternion.Euler(0, CharacterManager.Instance.characters[innerIndex].transform.eulerAngles.y, 0));
-            //cube.GetComponent<MeshFilter>().mesh = cube.transform.GetChild(innerIndex).gameObject.GetComponent<MeshFilter>().mesh;
-            int playerNo = Random.Range(1, 4);
-            GameManager.Instance.targetPlayerNo = playerNo;
-            if (GameManager.Instance.variationActive)
+            if (CharacterManager.Instance.characters.Length <= innerIndex)
             {
-                //cube.transform.GetChild(playerNo - 1).gameObject.SetActive(true);
+                PlayerController.life -= 1;
+                GameManager.Instance.playerController.LostLife(true);
+                cubeOnTop.SetActive(false);
             }
-            cubeBoundX = cube.GetComponent<MeshFilter>().mesh.bounds.extents.x;
-            Clinch.transform.parent = null;
-            Clinch.transform.position = cube.transform.position;
-            Clinch.transform.parent = cube.transform;
-            Clinch.transform.localScale = clinchScale;
-            cube.transform.localScale = new Vector3(0, GameManager.Instance.LocalScale.y, 0);
-            isCreateCube = false;
-            cube.GetComponent<CubeController>().enabled = true;
-            //cube.AddComponent<HingeJoint>();
-            //cube.GetComponent<HingeJoint>().anchor = new Vector3(0, 0.5f, 0);
-            //cube.GetComponent<HingeJoint>().axis = new Vector3(0, 0, 1);
-            //cube.GetComponent<HingeJoint>().connectedBody = hook.GetComponent<Rigidbody>();
-            cube.GetComponent<Rigidbody>().freezeRotation = true;
+            else
+            {
+                breakCount = 0;
+                Clinch.SetActive(true);
+                isFirstCube = false;
+                GameObject cube = (GameObject)Instantiate(CharacterManager.Instance.characters[innerIndex], new Vector3(hook.transform.position.x, hook.transform.position.y - 0.5f - (hook.GetComponent<MeshFilter>().mesh.bounds.extents.y) * hook.transform.lossyScale.y, hook.transform.position.z), Quaternion.Euler(0, CharacterManager.Instance.characters[innerIndex].transform.eulerAngles.y, 0));
+                //cube.GetComponent<MeshFilter>().mesh = cube.transform.GetChild(innerIndex).gameObject.GetComponent<MeshFilter>().mesh;
+                int playerNo = Random.Range(1, 4);
+                GameManager.Instance.targetPlayerNo = playerNo;
+                if (GameManager.Instance.variationActive)
+                {
+                    //cube.transform.GetChild(playerNo - 1).gameObject.SetActive(true);
+                }
+                cubeBoundX = cube.GetComponent<MeshFilter>().mesh.bounds.extents.x;
+                Clinch.transform.parent = null;
+                Clinch.transform.position = cube.transform.position;
+                Clinch.transform.parent = cube.transform;
+                Clinch.transform.localScale = clinchScale;
+                cube.transform.localScale = new Vector3(0, GameManager.Instance.LocalScale.y, 0);
+                isCreateCube = false;
+                cube.GetComponent<CubeController>().enabled = true;
+                //cube.AddComponent<HingeJoint>();
+                //cube.GetComponent<HingeJoint>().anchor = new Vector3(0, 0.5f, 0);
+                //cube.GetComponent<HingeJoint>().axis = new Vector3(0, 0, 1);
+                //cube.GetComponent<HingeJoint>().connectedBody = hook.GetComponent<Rigidbody>();
+                cube.GetComponent<Rigidbody>().freezeRotation = true;
+            }
         }
 
-        // Calls this when the player dies and game over
         public void Die()
         {
 
