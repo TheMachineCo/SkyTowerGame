@@ -159,12 +159,12 @@ namespace _DroppyTower
                     if (Mathf.Abs(Camera.main.transform.position.y - bottomPosition.y) < 1f)
                         moveDown = !moveDown;
                 }
-                else
-                {
-                    Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, topPosition, ref velocity, GameManager.Instance.CameraSpeed);
-                    if (Mathf.Abs(Camera.main.transform.position.y - topPosition.y) < 1f)
-                        moveDown = !moveDown;
-                }
+                //    else
+                //    {
+                //        Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, topPosition, ref velocity, GameManager.Instance.CameraSpeed);
+                //        if (Mathf.Abs(Camera.main.transform.position.y - topPosition.y) < 1f)
+                //            moveDown = !moveDown;
+                //    }
             }
         }
 

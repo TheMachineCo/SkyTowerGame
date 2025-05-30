@@ -156,7 +156,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.sglib.demogame
-    Standalone: unity.Your Company.Project Name
+    Standalone: com.DefaultCompany.SkyTowerGame
     Tizen: com.sglib.demogame
     iPhone: com.sglib.demogame
     tvOS: com.sglib.demogame

@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3524952710812046333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4296703957850442055}
+  - component: {fileID: 868964832957679330}
+  - component: {fileID: 3164862447407280680}
+  - component: {fileID: -4186517281514373373}
+  m_Layer: 0
+  m_Name: SM_building_boutique_france
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4296703957850442055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524952710812046333}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &868964832957679330
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524952710812046333}
+  m_Mesh: {fileID: -8205393471154602970, guid: 73f53e4c04b4f0c41bb35b1296aeff5c, type: 3}
+--- !u!23 &3164862447407280680
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524952710812046333}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: beefd292b6a461a48a845dac8a01dd06, type: 2}
+  - {fileID: 2100000, guid: 9affeba489112564d8587aaba7e8179a, type: 2}
+  - {fileID: 2100000, guid: 2f2291be2c7078340ab5f2ccaeec2dbb, type: 2}
+  - {fileID: 2100000, guid: af88853602cd6d84080c0eb68109231d, type: 2}
+  - {fileID: 2100000, guid: e9fe236a08f88c640825b27d6350256f, type: 2}
+  - {fileID: 2100000, guid: fc1742c488feb694b809015812bc13f8, type: 2}
+  - {fileID: 2100000, guid: 9affeba489112564d8587aaba7e8179a, type: 2}
+  - {fileID: 2100000, guid: 9affeba489112564d8587aaba7e8179a, type: 2}
+  - {fileID: 2100000, guid: b4f6428cd129e67408cdb6486012536c, type: 2}
+  - {fileID: 2100000, guid: c57d67447af93bb4398c92237a4537ee, type: 2}
+  - {fileID: 2100000, guid: 21556857699451448bf86fce36fdb74c, type: 2}
+  - {fileID: 2100000, guid: bbb69509b45fc9845998182a04c95114, type: 2}
+  - {fileID: 2100000, guid: ba90be9bda355d5409010a1b796d36a7, type: 2}
+  - {fileID: 2100000, guid: 5be9e10a91c77e343adc5d334eee9330, type: 2}
+  - {fileID: 2100000, guid: bbb69509b45fc9845998182a04c95114, type: 2}
+  - {fileID: 2100000, guid: ecc74cd24599ac44594eda312b3df750, type: 2}
+  - {fileID: 2100000, guid: 70abd6fb0cbd1604fbc721667bb32534, type: 2}
+  - {fileID: 2100000, guid: 458ac718625d35b499135fa08117afb5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-4186517281514373373
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524952710812046333}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8205393471154602970, guid: 73f53e4c04b4f0c41bb35b1296aeff5c, type: 3}
