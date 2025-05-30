@@ -174,15 +174,16 @@ namespace _DroppyTower
             var k1 = GameManager.Instance.key1;
             var k2 = GameManager.Instance.key2;
             var k3 = GameManager.Instance.key3;
+            var k4 = GameManager.Instance.key4;
             var targetKey = no == 1 ? k1 : no == 2 ? k2 : k3;
 
-            if ((variationActive && Input.GetKeyDown(targetKey)) || (!variationActive && (Input.GetKeyDown(k1) || Input.GetKeyDown(k2) || Input.GetKeyDown(k3))))    // first touch
+            if ((variationActive && Input.GetKeyDown(targetKey)) || (!variationActive && (Input.GetKeyDown(k1) || Input.GetKeyDown(k2) || Input.GetKeyDown(k3) || Input.GetKeyDown(k4))))    // first touch
             {
                 startPos = Input.mousePosition;
                 startTime = Time.time;
                 hasMoved = false;
             }
-            else if ((variationActive && Input.GetKey(targetKey)) || (!variationActive && (Input.GetKey(k1) || Input.GetKey(k2) || Input.GetKey(k3))))   // touch stays
+            else if ((variationActive && Input.GetKey(targetKey)) || (!variationActive && (Input.GetKey(k1) || Input.GetKey(k2) || Input.GetKey(k3) || Input.GetKey(k4))))   // touch stays
             {
                 endPos = Input.mousePosition;
                 endTime = Time.time;

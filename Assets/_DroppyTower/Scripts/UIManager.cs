@@ -92,9 +92,9 @@ namespace _DroppyTower
             bestScore.text = ScoreManager.Instance.HighScore.ToString();
             coinText.text = CoinManager.Instance.Coins.ToString();
 
-            if (playBtn.activeInHierarchy && (Input.GetKeyDown(GameManager.Instance.key1) || Input.GetKeyDown(GameManager.Instance.key2) || Input.GetKeyDown(GameManager.Instance.key3)))
+            if (playBtn.activeInHierarchy && (Input.GetKeyDown(GameManager.Instance.key1) || Input.GetKeyDown(GameManager.Instance.key2) || Input.GetKeyDown(GameManager.Instance.key3) || Input.GetKeyDown(GameManager.Instance.key4)))
                 StartGame();
-            if (restartBtn.activeInHierarchy && (Input.GetKeyDown(GameManager.Instance.key1) || Input.GetKeyDown(GameManager.Instance.key2) || Input.GetKeyDown(GameManager.Instance.key3)))
+            if (restartBtn.activeInHierarchy && (Input.GetKeyDown(GameManager.Instance.key1) || Input.GetKeyDown(GameManager.Instance.key2) || Input.GetKeyDown(GameManager.Instance.key3) || Input.GetKeyDown(GameManager.Instance.key4)))
             {
                 SceneManager.LoadScene(0);
             }

@@ -41,7 +41,7 @@ namespace _DroppyTower
             }
         }
 
-        public KeyCode key1 = KeyCode.A, key2 = KeyCode.S, key3 = KeyCode.D;
+        public KeyCode key1 = KeyCode.A, key2 = KeyCode.S, key3 = KeyCode.D, key4 = KeyCode.X;
 
         public static int GameCount
         {

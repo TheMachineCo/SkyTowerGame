@@ -522,6 +522,7 @@ namespace _DroppyTower
                 var k1 = GameManager.Instance.key1;
                 var k2 = GameManager.Instance.key2;
                 var k3 = GameManager.Instance.key3;
+                var k4 = GameManager.Instance.key4;
                 var targetKey = no == 1 ? k1 : no == 2 ? k2 : k3;
 
                 if (Input.GetKeyDown(k1) && isNewCube)
@@ -577,6 +578,31 @@ namespace _DroppyTower
                 else if (Input.GetKeyDown(k3) && isNewCube)
                 {
                     if (!variationActive || k3 == targetKey)
+                    {
+                        if (gameObject.transform.childCount > 0)
+                        {
+                            for (int i = 0; i < gameObject.transform.childCount; i++)
+                            {
+                                var child = gameObject.transform.GetChild(i);
+                                if (child.name == "Clinch")
+                                {
+                                    child.parent = null;
+                                }
+                            }
+                        }
+                        GameManager.Instance.playerController.Clinch.SetActive(false);
+                        if (!isFirstCube)
+                            cubeRigid.mass = 0;
+                        gameObject.transform.rotation = Quaternion.Euler(0, gameObject.transform.eulerAngles.y, 0);
+                        cubeRigid.velocity = new Vector3(0, -70, 0);
+                        isNewCube = false;
+                        previous = true;
+                        PlayerController.CanDrop = false;
+                    }
+                }
+                else if (Input.GetKeyDown(k4) && isNewCube)
+                {
+                    if (!variationActive || k4 == targetKey)
                     {
                         if (gameObject.transform.childCount > 0)
                         {
